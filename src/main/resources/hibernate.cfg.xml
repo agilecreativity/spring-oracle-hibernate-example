@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.0.37:1521:SID</property>
+		<property name="hibernate.connection.username">USERID</property>
+		<property name="hibernate.connection.password">PASSWORD</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="hibernate.default_schema">SCHEMA_NAME</property>
+		<property name="show_sql">true</property>
+		<mapping resource="com/demo/example/dbuser.hbm.xml"></mapping>
+		<mapping resource="com/demo/example/department.hbm.xml"></mapping>
+		<mapping resource="com/demo/example/employee.hbm.xml"></mapping>
+	</session-factory>
+</hibernate-configuration>

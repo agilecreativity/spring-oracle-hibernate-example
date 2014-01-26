@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.demo.example">
+	<class name="Employee" table="EMPLOYEE">
+
+        <id name="employeeId" column="EMP_ID" type="long">
+          <generator class="sequence">
+             <param name="sequence">emp_seq</param>
+          </generator>
+        </id>
+<!-- 
+        <id name="employeeId" type="java.lang.Long" column="EMP_ID" >
+			<generator class="assigned" />
+		</id>
+-->
+
+		
+		<property name="firstName" type="string">
+			<column name="FIRST_NAME" length="50" not-null="true" />
+		</property>
+		
+		<property name="lastName" type="string">
+			<column name="LAST_NAME" length="50" not-null="true" />
+		</property>
+		
+		<property name="birthDate" type="date" column="BIRTH_DATE" />
+		
+		<property name="cellPhone" type="string">
+			<column name="CELL_PHONE" length="15" />
+		</property>
+		
+  		<many-to-one name="department" class="com.demo.example.Department" fetch="select">
+            <column name="DEPT_ID" not-null="true" />
+        </many-to-one>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.demo.example">
+    <class name="Department" table="DEPARTMENT">
+
+        <id name="departmentId" column="DEPT_ID" type="long">
+          <generator class="sequence">
+             <param name="sequence">dept_seq</param>
+          </generator>
+        </id>
+<!-- 
+        <id name="departmentId" type="java.lang.Long" column="DEPT_ID" >
+			<generator class="assigned" />
+		</id>
+-->		
+        <property name="departmentName" column="DEPT_NAME"/>
+		
+		<set name="employees" table="EMPLOYEE" 
+				 inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DEPT_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.demo.example.Employee" />
+        </set>
+	</class>
+</hibernate-mapping>
